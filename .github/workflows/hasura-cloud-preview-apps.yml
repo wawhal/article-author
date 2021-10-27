@@ -1,0 +1,35 @@
+name: 'preview-apps'
+on: # rebuild any PRs and main branch changes
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  hasura-cloud-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Hasura Cloud Preview Apps
+      uses: hasura/hasura-cloud-preview-apps@support-preview-app-scheduling
+        id: hasura_cloud_preview
+        with:
+          name: "article-author-cc${{github.env.GITHUB_HEAD_REF}}${{github.event.number}}"
+          region: "ap-south-1"
+          tier: "cloud_payg"
+          hasuraProjectDirectoryPath: hasura
+          hasuraCloudGraphQLEndpoint: 'https://dc4b-60-254-58-160.ngrok.io/v1/graphql'
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          HASURA_CLOUD_ACCESS_TOKEN: ${{secrets.HASURA_CLOUD_ACCESS_TOKEN}}
+
+      - uses: hasura/comment-progress@v2.1.0
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          id: preview_app_comment
+          number: ${{github.event.number}}
+          repository: "wawhal/article-author"
+          message: |
+                  Console URL available at ${{steps.hasura_cloud_preview.outputs.consoleURL}}
+                  GraphQL Endpoint available at ${{steps.hasura_cloud_preview.outputs.graphQLEndpoint}}
