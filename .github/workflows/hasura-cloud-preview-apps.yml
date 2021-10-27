@@ -16,8 +16,8 @@ jobs:
         id: hasura_cloud_preview
         with:
           name: "article-author-cc${{github.env.GITHUB_HEAD_REF}}${{github.event.number}}"
-          region: "ap-south-1"
-          tier: "cloud_payg"
+          region: "us-east-2"
+          tier: "cloud_free"
           hasuraProjectDirectoryPath: hasura
           hasuraCloudGraphQLEndpoint: 'https://dc4b-60-254-58-160.ngrok.io/v1/graphql'
         env:
