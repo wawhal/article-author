@@ -12,14 +12,14 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Hasura Cloud Preview Apps
-        uses: hasura/hasura-cloud-preview-apps@support-preview-app-scheduling
+        uses: hasura/hasura-cloud-preview-apps@v0.1.0
         id: hasura_cloud_preview
         with:
           name: "article-author-cc${{github.env.GITHUB_HEAD_REF}}${{github.event.number}}"
-          region: "us-east-2"
+          region: "ap-south-1"
           tier: "cloud_free"
           hasuraProjectDirectoryPath: hasura
-          hasuraCloudGraphQLEndpoint: 'https://dc4b-60-254-58-160.ngrok.io/v1/graphql'
+          hasuraCloudGraphQLEndpoint: 'https://data.pro.arusah.com/v1/graphql'
           postgresDBConfig: |
             POSTGRES_SERVER_CONNECTION_URI=${{secrets.PG_STRING}}
             PG_ENV_VARS_FOR_HASURA=PG_DATABASE_URL
