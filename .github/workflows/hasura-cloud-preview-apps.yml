@@ -15,11 +15,13 @@ jobs:
         uses: hasura/hasura-cloud-preview-apps@v0.1.0
         id: hasura_cloud_preview
         with:
-          name: "article-author-cc${{github.env.GITHUB_HEAD_REF}}${{github.event.number}}"
+          name: "article-author-staging${{github.env.GITHUB_HEAD_REF}}${{github.event.number}}"
           region: "ap-south-1"
           tier: "cloud_free"
           hasuraProjectDirectoryPath: hasura
           hasuraCloudGraphQLEndpoint: 'https://data.pro.arusah.com/v1/graphql'
+          hasuraEnv: |
+            ENV_VAR_TEST=value_test
           postgresDBConfig: |
             POSTGRES_SERVER_CONNECTION_URI=${{secrets.PG_STRING}}
             PG_ENV_VARS_FOR_HASURA=PG_DATABASE_URL
