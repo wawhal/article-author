@@ -1,3 +1,3 @@
 # article-author
 
-Simple article author schemanewdkfjdkj
+Simple article author
