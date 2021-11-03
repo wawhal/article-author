@@ -16,7 +16,7 @@ jobs:
         id: hasura_cloud_preview
         with:
           name: "article-author-prod${{github.env.GITHUB_HEAD_REF}}${{github.event.number}}"
-          region: "ap-south-2"
+          region: "ap-south-1"
           tier: "cloud_payg"
           hasuraProjectDirectoryPath: hasura
           hasuraEnv: |
