@@ -14,7 +14,7 @@ jobs:
           name: "article-author-prod${{github.env.GITHUB_HEAD_REF}}${{github.event.number}}"
           delete: true
           postgresDBConfig: |
-            POSTGRES_SERVER_CONNECTION_URI=${{secrets.TEST_PG_STRING}}
+            POSTGRES_SERVER_CONNECTION_URI=${{secrets.PG_STRING}}
             PG_ENV_VARS_FOR_HASURA=PG_DATABASE_URL
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}} # ${{ secrets.GITHUB_TOKEN }} is provided by default by GitHub actions
