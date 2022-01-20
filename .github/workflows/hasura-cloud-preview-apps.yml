@@ -17,7 +17,7 @@ jobs:
         with:
           name: "article-author-prod${{github.env.GITHUB_HEAD_REF}}${{github.event.number}}"
           region: "ap-south-1"
-          tier: "cloud_payg"
+          tier: "cloud_free"
           hasuraProjectDirectoryPath: hasura
           hasuraCloudGraphQLEndpoint: "https://data.pro.arusah.com/v1/graphql"
           hasuraEnv: |
