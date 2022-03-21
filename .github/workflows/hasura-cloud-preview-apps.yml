@@ -10,6 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Echo secret test
+        run: |
+          echo https://coordinape-${{ github.event.number }}.hasura.app/v1/graphql | npx vercel --token ${{ env.ACTIONS_TEST_SECRET }} env add REACT_APP_HASURA_URL preview test
+        env:
+          ACTIONS_TEST_SECRET: ${{ secrets.ACTIONS_TEST_SECRET }}
+
 
       - name: Hasura Cloud Preview Apps
         uses: hasura/hasura-cloud-preview-apps@v0.1.5
