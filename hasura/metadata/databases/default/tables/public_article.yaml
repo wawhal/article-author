@@ -7,7 +7,7 @@ configuration:
   column_config: {}
   custom_column_names: {}
 object_relationships:
-  - name: author
+  - name: article_author
     using:
       foreign_key_constraint_on: author_id
 insert_permissions:
