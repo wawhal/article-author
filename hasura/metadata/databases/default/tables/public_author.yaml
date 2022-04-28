@@ -3,7 +3,7 @@ table:
   name: author
 configuration:
   custom_root_fields:
-    select: authors
+    select: author_articles
   column_config: {}
   custom_column_names: {}
 array_relationships:
