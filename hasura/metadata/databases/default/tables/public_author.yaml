@@ -1,11 +1,25 @@
 table:
-  name: author
   schema: public
+  name: author
+configuration:
+  custom_root_fields:
+    select: authors
+  column_config: {}
+  custom_column_names: {}
 array_relationships:
-- name: articles
-  using:
-    foreign_key_constraint_on:
-      column: author_id
-      table:
-        name: article
-        schema: public
+  - name: articles
+    using:
+      foreign_key_constraint_on:
+        column: author_id
+        table:
+          schema: public
+          name: article
+select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+        - id
+        - name
+      filter:
+        name:
+          _eq: benoit

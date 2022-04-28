@@ -1,21 +1,42 @@
 table:
-  name: article
   schema: public
+  name: article
 configuration:
-  custom_column_names: {}
-  custom_name: articles
   custom_root_fields: {}
+  custom_name: articles
+  column_config: {}
+  custom_column_names: {}
 object_relationships:
-- name: author
-  using:
-    foreign_key_constraint_on: author_id
+  - name: author
+    using:
+      foreign_key_constraint_on: author_id
+insert_permissions:
+  - role: anonymous
+    permission:
+      check: {}
+      columns:
+        - title
+      backend_only: false
 select_permissions:
-- permission:
-    columns:
-    - id
-    - title
-    - content
-    - author_id
-    filter: {}
-    limit: 10
-  role: anonymous
+  - role: anonymous
+    permission:
+      columns:
+        - id
+        - title
+        - content
+        - author_id
+      filter:
+        author_id:
+          _eq: 1
+      limit: 10
+event_triggers:
+  - name: test
+    definition:
+      enable_manual: false
+      insert:
+        columns: '*'
+    retry_conf:
+      num_retries: 0
+      interval_sec: 10
+      timeout_sec: 60
+    webhook: http://httpbin.org/post
