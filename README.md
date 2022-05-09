@@ -1,4 +1,4 @@
-# article-author
+# article-author-schema
 
 Simple article author
 
