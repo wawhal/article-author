@@ -25,7 +25,6 @@ select_permissions:
         - title
         - content
         - author_id
-        - rating
       filter:
         author_id:
           _eq: 1
