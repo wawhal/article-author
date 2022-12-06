@@ -7,7 +7,7 @@ static-env:
   HASURA_GRAPHQL_ENABLE_REMOTE_SCHEMA_PERMISSIONS: true
 
 user-env:
-  PG_DB_URL:
+  PG_DATABASE_URL:
     description: "Postgres database URL"
     mandatory: true
   ACTION_WEBHOOK_URL:
